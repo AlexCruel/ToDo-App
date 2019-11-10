@@ -4,6 +4,13 @@
       <div class="form-group">
         <h2>Add what you want to do!</h2>
         <div class="input-group mb-3">
+          <el-alert
+            v-if="enableAlert"
+            class="elAlert"
+            title="It's can't be empty! Try again!"
+            type="error"
+            effect="dark"
+          ></el-alert>
           <input
             class="form-control"
             type="text"
@@ -23,6 +30,26 @@
             {{ todo }}
           </li>
         </ul>
+        <div>
+          <el-row v-if="enable">
+            <el-button type="success" icon="el-icon-check" circle disabled></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle disabled></el-button>
+          </el-row>
+          <el-row v-else>
+            <el-button type="success" icon="el-icon-check" circle></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle v-on:click="preDeleteList"></el-button>
+          </el-row>
+        </div>
+        <div class="elWarning" v-if="enableWarning">
+          <el-alert title="Are you sure to delete this list?" type="warning">
+            <el-button
+              type="success"
+              round
+              v-on:click="enableWarning = !enableWarning, enable = !enable"
+            >No</el-button>
+            <el-button type="danger" round v-on:click="deleteList">Yes</el-button>
+          </el-alert>
+        </div>
         <hr />
       </div>
     </div>
@@ -34,16 +61,31 @@ export default {
   data() {
     return {
       todoList: [],
-      newTask: ""
+      newTask: "",
+      enableAlert: false,
+      enable: true,
+      enableWarning: false
     };
   },
   methods: {
     addToList() {
       if (this.newTask === "") {
-        alert("Wrong! It's cant' be empty! Try again!");
+        this.enableAlert = true;
       } else {
         this.todoList.push(this.newTask);
         this.newTask = "";
+        this.enableAlert = false;
+        this.enable = false;
+      }
+    },
+    preDeleteList() {
+      this.enableWarning = !this.enableWarning;
+      this.enable = !this.enable;
+    },
+    deleteList() {
+      while (this.todoList.length > 0) {
+        this.todoList.pop();
+        this.enableWarning = !this.enableWarning;
       }
     }
   }
@@ -62,5 +104,13 @@ li {
 .row {
   margin-top: 30px;
   min-height: 300px;
+}
+
+.elAlert {
+  margin-bottom: 10px;
+}
+
+.elWarning {
+  margin-top: 10px;
 }
 </style>

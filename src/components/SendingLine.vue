@@ -9,7 +9,7 @@
           </div>
           <input class="form-control" type="text" id="email" />
         </div>
-        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-dark">Send</button>
       </div>
     </div>
   </div>
