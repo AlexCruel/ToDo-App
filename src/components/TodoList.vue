@@ -2,8 +2,8 @@
   <div class="row justify-content-center">
     <div class="form-group col-sm-4">
       <div class="form-group">
-        <h2>Add what you want to do!</h2>
-        <div class="input-group mb-3">
+        <h2 v-show="accept">Add what you want to do!</h2>
+        <div class="input-group mb-3" v-show="accept">
           <el-alert
             v-if="enableAlert"
             class="elAlert"
@@ -24,19 +24,34 @@
         </div>
         <hr />
         <h3>What to do</h3>
-        <ul v-for="(todo, index) in todoList" v-bind:key="index">
-          <li>
-            <input type="checkbox" class="form-check-input" />
-            {{ todo }}
-          </li>
-        </ul>
+        <div class="list" v-bind:style="confirmList">
+          <ul v-for="(todo, index) in todoList" v-bind:key="index">
+            <li>
+              <el-button
+                v-if="element"
+                icon="el-icon-minus"
+                circle
+                v-on:click="deleteFromList(index)"
+              ></el-button>
+              <el-button v-else icon="el-icon-minus" circle disabled></el-button>
+              {{ todo }}
+            </li>
+          </ul>
+        </div>
         <div>
           <el-row v-if="enable">
             <el-button type="success" icon="el-icon-check" circle disabled></el-button>
             <el-button type="danger" icon="el-icon-delete" circle disabled></el-button>
+            <el-button
+              type="info"
+              icon="el-icon-close"
+              v-show="cancell"
+              v-on:click="cancellList"
+              circle
+            ></el-button>
           </el-row>
           <el-row v-else>
-            <el-button type="success" icon="el-icon-check" circle></el-button>
+            <el-button type="success" icon="el-icon-check" circle v-on:click="confirm"></el-button>
             <el-button type="danger" icon="el-icon-delete" circle v-on:click="preDeleteList"></el-button>
           </el-row>
         </div>
@@ -64,7 +79,13 @@ export default {
       newTask: "",
       enableAlert: false,
       enable: true,
-      enableWarning: false
+      enableWarning: false,
+      confirmList: {
+        backgroundColor: ""
+      },
+      accept: true,
+      cancell: false,
+      element: true
     };
   },
   methods: {
@@ -85,7 +106,27 @@ export default {
     deleteList() {
       while (this.todoList.length > 0) {
         this.todoList.pop();
-        this.enableWarning = !this.enableWarning;
+        this.enableWarning = false;
+      }
+    },
+    confirm() {
+      this.confirmList.backgroundColor = "#E1F3D8";
+      this.enable = true;
+      this.accept = false;
+      this.cancell = true;
+      this.element = false;
+    },
+    cancellList() {
+      this.confirmList.backgroundColor = "";
+      this.enable = false;
+      this.accept = true;
+      this.cancell = false;
+      this.element = true;
+    },
+    deleteFromList(index) {
+      this.todoList.splice(index);
+      if (this.todoList.length < 1) {
+        this.enable = true;
       }
     }
   }
