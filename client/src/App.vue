@@ -4,6 +4,7 @@
     <GreetingLine/>
     <TodoList/>
     <SendingLine/>
+    <PostComponent/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import TodoList from './components/TodoList.vue'
 import GreetingLine from './components/GreetingLine.vue'
 import SendingLine from './components/SendingLine.vue'
 import Header from './components/Header.vue'
+import PostComponent from './components/PostComponent'
 
 export default {
   name: 'app',
@@ -24,7 +26,8 @@ export default {
     Header,
     TodoList,
     GreetingLine,
-    SendingLine
+    SendingLine,
+    PostComponent
   },
   methods: {
 
