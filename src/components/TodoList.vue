@@ -124,7 +124,7 @@ export default {
       this.element = true;
     },
     deleteFromList(index) {
-      this.todoList.splice(index);
+      this.todoList.splice(index, 1);
       if (this.todoList.length < 1) {
         this.enable = true;
       }
