@@ -55,6 +55,12 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style scoped>
+    /* .posts {
+        border: 2px solid green;
+    }
 
+    .container {
+        border: 2px solid red;
+    } */
 </style>
