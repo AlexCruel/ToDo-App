@@ -56,11 +56,11 @@ export default {
 </script>
 
 <style scoped>
-    /* .posts {
+    .posts {
         border: 2px solid green;
     }
 
     .container {
         border: 2px solid red;
-    } */
+    }
 </style>
