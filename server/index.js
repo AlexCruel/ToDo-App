@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 /* Register Form */
 const mongoURI = 'mongodb+srv://Test:12345@cluster0-gaifl.mongodb.net/test?retryWrites=true&w=majority';
 
-mongoose.connect(mongoURI, { useUnifiedTopology: true })
+mongoose.connect(mongoURI, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err))
 

@@ -2,7 +2,7 @@ const express = require("express");
 const users = express.Router();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 
 users.use(cors());
@@ -18,7 +18,7 @@ users.post("/register", (req, res) => {
         password: req.body.password,
         created: today
     }
-
+    User.create(userData)
     User.findOne({
             email: req.body.email
         })
