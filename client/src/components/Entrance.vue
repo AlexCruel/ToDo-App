@@ -30,7 +30,7 @@
                   <input class="form-control" type="password" />
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">Register</button>
+                  <router-link to="/main"><button type="submit" class="btn btn-primary btn-block">Register</button></router-link>
                 </div>
                 <small class="text-muted">
                   By clicking the 'Sign Up' button, you confirm that you accept our
@@ -66,7 +66,7 @@
                   <input class="form-control" type="password" />
                 </div>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block">Let's go!</button>
+                  <router-link to="/main"><button type="submit" class="btn btn-primary btn-block">Let's go!</button></router-link>
                 </div>
                 <small class="text-muted">
                   By clicking the 'Log In' button, you confirm that you accept our

@@ -5,7 +5,8 @@
     <TodoList/>
     <SendingLine/>
     <PostComponent/> -->
-    <Entrance/>
+    <!-- <Entrance/> -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -15,7 +16,7 @@
 // import SendingLine from './components/SendingLine.vue'
 // import Header from './components/Header.vue'
 // import PostComponent from './components/PostComponent'
-import Entrance from './components/Entrance'
+//import Entrance from './components/Entrance'
 
 export default {
   name: 'app',
@@ -30,7 +31,7 @@ export default {
     // GreetingLine,
     // SendingLine,
     // PostComponent,
-    Entrance
+    //Entrance
   },
   methods: {
 

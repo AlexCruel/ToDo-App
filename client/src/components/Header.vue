@@ -1,13 +1,10 @@
 <template>
   <div>
-    <div class="line"></div>
     <el-menu
-      :default-active="activeIndex2"
+      :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
+      @select="handleSelect"
     >
       <el-menu-item index="1">Processing Center</el-menu-item>
       <el-submenu index="2">
@@ -26,6 +23,7 @@
       <el-menu-item index="4">
         <a href="https://www.ele.me" target="_blank">Orders</a>
       </el-menu-item>
+      <el-menu-item><router-link to="firstblood"><el-button type="primary" round label="right">Sign Up!</el-button></router-link></el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -37,12 +35,16 @@ export default {
       activeIndex: "1",
       activeIndex2: "1"
     };
-  },
+  }
 };
 </script>
 
 <style scoped>
 a {
   color: white;
+}
+
+.el-button {
+  float: right;
 }
 </style>
