@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="navFull">
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"
@@ -23,7 +23,13 @@
       <el-menu-item index="4">
         <a href="https://www.ele.me" target="_blank">Orders</a>
       </el-menu-item>
-      <el-menu-item><router-link to="firstblood"><el-button type="primary" round label="right">Sign Up!</el-button></router-link></el-menu-item>
+      <div class="navRight">
+        <el-menu-item>
+          <router-link to="firstblood">
+            <el-button type="primary" round background="false">Sign Up!</el-button>
+          </router-link>
+        </el-menu-item>
+      </div>
     </el-menu>
   </div>
 </template>
@@ -44,7 +50,17 @@ a {
   color: white;
 }
 
-.el-button {
-  float: right;
+.navFull {
+  position: relative;
+}
+
+.navRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.el-menu-item {
+  background-color: white;
 }
 </style>
